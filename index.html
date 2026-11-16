@@ -1,0 +1,432 @@
+```html
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obsidian Web Agency</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #090a0f;
+            color: #f1f5f9;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            background-color: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        header .logo {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        header nav a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: #f1f5f9;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        header nav a:hover {
+            color: #10b981;
+        }
+        header .cta-buttons a {
+            margin-left: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+            background-color: #10b981;
+            transition: background-color 0.3s ease;
+        }
+        header .cta-buttons a:hover {
+            background-color: #34d399;
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5rem 2rem;
+            margin-top: 5rem;
+        }
+        .hero .left {
+            max-width: 50%;
+        }
+        .hero .left h1 {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero .left p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .hero .left .buttons a {
+            display: inline-block;
+            margin-right: 1rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+            background-color: #10b981;
+            transition: background-color 0.3s ease;
+        }
+        .hero .left .buttons a.secondary {
+            background-color: #11131a;
+            color: #f1f5f9;
+            display: flex;
+            align-items: center;
+        }
+        .hero .left .buttons a.secondary:hover {
+            background-color: #1f2937;
+        }
+        .hero .left .social-proof {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .hero .right {
+            position: relative;
+            max-width: 50%;
+        }
+        .hero .right img {
+            width: 100%;
+            height: auto;
+            border-radius: 1.5rem;
+            onerror="this.style.display='none'";
+            class="w-full h-48 object-cover rounded-2xl mb-4";
+            loading="lazy";
+        }
+        .hero .right .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #10b981;
+            color: black;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+        }
+        .services {
+            padding: 5rem 2rem;
+        }
+        .services .service-card {
+            background-color: #11131a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .services .service-card:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+        .services .service-card img {
+            onerror="this.style.display='none'";
+            class="w-full h-48 object-cover rounded-2xl mb-4";
+            loading="lazy";
+        }
+        .services .service-card h3 {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .services .service-card p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        .services .service-card .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #10b981;
+            margin-bottom: 1rem;
+        }
+        .services .service-card .order-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+            background-color: #10b981;
+            transition: background-color 0.3s ease;
+        }
+        .services .service-card .order-btn:hover {
+            background-color: #34d399;
+        }
+        .steps {
+            padding: 5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .steps .step {
+            width: 22%;
+            text-align: center;
+        }
+        .steps .step h4 {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .steps .step p {
+            font-size: 0.9rem;
+        }
+        .pricing {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        .pricing .pricing-card {
+            display: inline-block;
+            width: 30%;
+            background-color: #11131a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin: 1rem;
+        }
+        .pricing .pricing-card:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+        .pricing .pricing-card h3 {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .pricing .pricing-card .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #10b981;
+            margin-bottom: 1rem;
+        }
+        .pricing .pricing-card .features {
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+        .pricing .pricing-card .features li {
+            list-style: none;
+            margin-bottom: 0.5rem;
+        }
+        .pricing .pricing-card .order-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+            background-color: #10b981;
+            transition: background-color 0.3s ease;
+        }
+        .pricing .pricing-card .order-btn:hover {
+            background-color: #34d399;
+        }
+        .faq {
+            padding: 5rem 2rem;
+        }
+        .faq .faq-item {
+            margin-bottom: 1rem;
+        }
+        .faq .faq-item h4 {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .faq .faq-item p {
+            display: none;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        .faq .faq-item.active p {
+            display: block;
+        }
+        .faq .faq-item h4 .chevron {
+            transition: transform 0.3s ease;
+        }
+        .faq .faq-item.active h4 .chevron {
+            transform: rotate(180deg);
+        }
+        .contact {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        .contact p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        .contact a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+            background-color: #10b981;
+            transition: background-color 0.3s ease;
+        }
+        .contact a:hover {
+            background-color: #34d399;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Obsidian</div>
+        <nav>
+            <a href="#services">Послуги</a>
+            <a href="#pricing">Тарифи</a>
+            <a href="#steps">Етапи</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+        <div class="cta-buttons">
+            <a href="tel:+380671234567">Телефонуйте</a>
+            <a href="https://t.me/pavlograd_admin">Замовити в Telegram</a>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="left">
+            <div class="status-badge">🟢 Працюємо щодня • Київ та область</div>
+            <h1>Розкішні веб-рішення<br>для вашого бізнесу</h1>
+            <p>Ми створюємо сайти, які вражають і продають.</p>
+            <div class="buttons">
+                <a href="#services">Замовити зараз</a>
+                <a href="#faq" class="secondary">
+                    <span>Дізнатися більше</span>
+                </a>
+            </div>
+            <div class="social-proof">3,200+ клієнтів • 12 міс гарантії • 4.9/5 рейтинг</div>
+        </div>
+        <div class="right">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85" alt="Hero Image">
+            <div class="badge">Преміум якість</div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Service 1">
+            <h3>Розробка веб-сайтів</h3>
+            <p>✓ Дизайн<br>✓ Адаптивність<br>✓ SEO оптимізація</p>
+            <div class="price">1 800 ₴</div>
+            <a href="https://t.me/pavlograd_admin" class="order-btn">Замовити</a>
+        </div>
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Service 2">
+            <h3>Інтернет-магазини</h3>
+            <p>✓ Каталог товарів<br>✓ Оплата онлайн<br>✓ Інтеграція CRM</p>
+            <div class="price">3 500 ₴</div>
+            <a href="https://t.me/pavlograd_admin" class="order-btn">Замовити</a>
+        </div>
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Service 3">
+            <h3>SEO та маркетинг</h3>
+            <p>✓ Просування<br>✓ Аналіз<br>✓ Звітність</p>
+            <div class="price">6 200 ₴</div>
+            <a href="https://t.me/pavlograd_admin" class="order-btn">Замовити</a>
+        </div>
+    </section>
+
+    <section class="steps" id="steps">
+        <div class="step">
+            <h4>01. Заявка та оцінка</h4>
+            <p>Залиште заявку, і ми швидко оцінемо ваш проект.</p>
+        </div>
+        <div class="step">
+            <h4>02. Виїзд майстра</h4>
+            <p>Наш спеціаліст прибуде до вас протягом 40 хвилин.</p>
+        </div>
+        <div class="step">
+            <h4>03. Виконання за регламентом</h4>
+            <p>Ретельне виконання всіх необхідних робіт.</p>
+        </div>
+        <div class="step">
+            <h4>04. Контроль та оплата</h4>
+            <p>Перевірка виконаних робіт перед оплатою.</p>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="pricing-card">
+            <h3>Базовий</h3>
+            <div class="price">3 000 ₴</div>
+            <ul class="features">
+                <li>✓ Адаптивний дизайн</li>
+                <li>✓ SEO базове</li>
+                <li>✓ Технічна підтримка</li>
+            </ul>
+            <a href="https://t.me/pavlograd_admin" class="order-btn">Замовити</a>
+        </div>
+        <div class="pricing-card hit">
+            <h3>Оптимальний [ХІТ]</h3>
+            <div class="price">6 000 ₴</div>
+            <ul class="features">
+                <li>✓ Адаптивний дизайн</li>
+                <li>✓ SEO просування</li>
+                <li>✓ Інтеграція CRM</li>
+            </ul>
+            <a href="https://t.me/pavlograd_admin" class="order-btn">Замовити</a>
+        </div>
+        <div class="pricing-card">
+            <h3>VIP</h3>
+            <div class="price">12 000 ₴</div>
+            <ul class="features">
+                <li>✓ Індивідуальний дизайн</li>
+                <li>✓ Повна SEO оптимізація</li>
+                <li>✓ Постійна підтримка</li>
+            </ul>
+            <a href="https://t.me/pavlograd_admin" class="order-btn">Замовити</a>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="faq-item">
+            <h4>Як швидко ви виконуєте замовлення? <span class="chevron">▼</span></h4>
+            <p>Залежно від складності проекту, термін виконання варіюється від 3 до 14 днів.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Чи надаєте ви гарантію? <span class="chevron">▼</span></h4>
+            <p>Так, ми надаємо 12 місяців гарантії на всі наші послуги.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Чи працюєте ви у вихідні? <span class="chevron">▼</span></h4>
+            <p>Так, ми працюємо кожного дня з 08:30 до 21:00.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Чи можу я замовити лише дизайн? <span class="chevron">▼</span></h4>
+            <p>Так, ми пропонуємо окремі послуги з розробки дизайну для вашого сайту.</p>
+        </div>
+    </section>
+
+    <section class="contact">
+        <p>Адреса: Київ, вул. Велика Васильківська, 102</p>
+        <p>Графік роботи: Пн–Нд 08:30 – 21:00</p>
+        <a href="https://t.me/pavlograd_admin">Зв'язатись у Telegram</a>
+    </section>
+
+    <footer>
